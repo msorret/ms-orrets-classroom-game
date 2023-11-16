@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://c6xws12x5maee"]
+
+[ext_resource type="Script" path="res://Main Character.gd" id="1_wbwmx"]
+[ext_resource type="Texture2D" uid="uid://cjiytxaw12i2o" path="res://assets/character/adult/run/character_body/character_brown_run_body.png" id="2_v561j"]
+
+[sub_resource type="Animation" id="Animation_q32bh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBrownRunBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionPolygon2D:build_mode")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_b4gu8"]
+resource_name = "walk left"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBrownRunBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_6bkvu"]
+resource_name = "walk_right"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterBrownRunBody:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1.4, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2f84"]
+_data = {
+"RESET": SubResource("Animation_q32bh"),
+"walk left": SubResource("Animation_b4gu8"),
+"walk right": SubResource("Animation_6bkvu")
+}
+
+[node name="Main Character" type="CharacterBody2D"]
+scale = Vector2(5, 5)
+script = ExtResource("1_wbwmx")
+
+[node name="CharacterBrownRunBody" type="Sprite2D" parent="."]
+position = Vector2(-1, 0)
+texture = ExtResource("2_v561j")
+hframes = 4
+vframes = 4
+frame = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 3.0
+libraries = {
+"": SubResource("AnimationLibrary_t2f84")
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-5.2, -0.8, -5.2, -3.6, -3.8, -4.2, 1.2, -4.2, 2.4, -3.6, 2.2, 1.4, 1, 2, 1.2, 6, -0.2, 6, -1.8, 6.4, -2.8, 6.4, -3.2, 4.6, -4, 4.2, -4, 2.2, -5.2, 1.4)

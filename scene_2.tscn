@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://r4fjhif8axhd"]
+
+[ext_resource type="PackedScene" uid="uid://c6xws12x5maee" path="res://main_character.tscn" id="1_ibg2c"]
+[ext_resource type="Texture2D" uid="uid://dejsgev1svi6n" path="res://assets/commerce/fishmarket/commerce_fishmarket_stall.png" id="2_udery"]
+[ext_resource type="Texture2D" uid="uid://dby7hlfhxqv27" path="res://assets/commerce/ores/commerce_ore_crystals_stall.png" id="3_2h8bo"]
+
+[node name="Scene2" type="Node2D"]
+
+[node name="Main Character" parent="." instance=ExtResource("1_ibg2c")]
+position = Vector2(491, 202)
+
+[node name="CommerceFishmarketStall" type="Sprite2D" parent="."]
+position = Vector2(358, 165)
+texture = ExtResource("2_udery")
+
+[node name="CommerceOreCrystalsStall" type="Sprite2D" parent="."]
+position = Vector2(460, 335)
+texture = ExtResource("3_2h8bo")
